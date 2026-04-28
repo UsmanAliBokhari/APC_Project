@@ -1,0 +1,21 @@
+# Python Virtual Environment
+venv/
+env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Machine Learning Models & Binaries
+*.pkl
+models/detector.pkl
+
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE / Editor folders (Just in case you use VSCode or PyCharm later)
+.vscode/
+.idea/
