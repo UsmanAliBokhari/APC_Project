@@ -22,6 +22,8 @@ from utils.helpers import (
     img_to_photoimage,
     image_resize,
     load_image,
+    risk_summary_text,
+    average_risk_score,
 )
 from ui.theme import *
 from ui.widgets import _btn, _divider
@@ -32,6 +34,7 @@ class SkinScanApp:
     def __init__(self, root: tk.Tk):
         self.root = root
         self._detector = Detector()
+        self._lesion_history: list[SkinLesion] = []
         self._configure_window()
         self._configure_styles()
         self._build_ui()
@@ -146,6 +149,14 @@ class SkinScanApp:
         tk.Label(sbar, textvariable=self._status_var,
                  font=FONT_SMALL, bg=C_HEADER, fg=C_TEXT_2
                  ).pack(side="left", padx=12, pady=5)
+        
+    
+    def _update_history(self):
+        for l in self._lesion_history:
+            print(f"{l.image_name} — {l.risk_level} ({l.risk_score:.3f})")
+        summary = risk_summary_text(self._lesion_history)
+        avg = average_risk_score(self._lesion_history)
+        print(f"Summary: {summary} | Avg: {avg:.3f}")
 
     # ------------------------------------------------------------------
     # UI state helpers
@@ -253,5 +264,9 @@ class SkinScanApp:
         segmenter = Segmenter(lesion.enhanced_image)
         segmenter._result = lesion.mask
         self._draw_on_canvas(segmenter.get_overlay())
+        
+         # Add to history list
+        self._lesion_history.append(lesion)
+        self._update_history()
 
         self._set_status(f"Analysis complete  ·  {lesion.risk_level} Risk  ({lesion.risk_score:.3f})")
