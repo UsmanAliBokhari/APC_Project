@@ -1,0 +1,13 @@
+=======================================================
+  Test Images — Data Licence
+=======================================================
+
+Images in test_images/ are sourced from the ISIC Archive
+and contributed by the ViDIR Group, Department of Dermatology,
+Medical University of Vienna.
+
+Licensed under Creative Commons Attribution Non-Commercial (CC-BY-NC 4.0)
+https://creativecommons.org/licenses/by-nc/4.0/
+
+You are free to share and adapt the images for non-commercial purposes,
+provided appropriate credit is given to the original source.

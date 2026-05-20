@@ -16,17 +16,16 @@ What happens on startup:
 
 import tkinter as tk
 from utils.model_setup import ensure_model_exists
-from ui.app import SkinScanApp
+from ui.skin_scan_app import SkinScanApp
 
 
 def main() -> None:
-    # Ensure a trained model exists before the window opens
+
     ensure_model_exists()
-
     root = tk.Tk()
-    app = SkinScanApp(root)    # noqa: F841 – keeps the reference alive
-
-    # Centre the window on screen
+    app = SkinScanApp(root)   
+    
+    # Center the window on screen
     root.update_idletasks()
     w = root.winfo_width()
     h = root.winfo_height()
