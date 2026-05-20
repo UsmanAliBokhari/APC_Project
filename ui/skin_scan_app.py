@@ -213,12 +213,11 @@ class SkinScanApp:
         """Run enhancement, segmentation, and feature extraction off the main thread."""
         try:
             lesion = self._current_lesion
-            if lesion.enhanced_image is None:
-                lesion.enhanced_image = Enhancer(lesion.raw_image).result
-            if lesion.mask is None:
-                lesion.mask = Segmenter(lesion.enhanced_image).result
+            lesion.enhanced_image = Enhancer(lesion.raw_image).result
+            lesion.mask = Segmenter(lesion.enhanced_image).result
             extractor = FeatureExtractor(lesion.enhanced_image, lesion.mask)
             lesion.features = extractor.result
+            
             risk_score, risk_level = self._detector.predict(lesion.features)
             lesion.risk_score = risk_score
             lesion.risk_level = risk_level
