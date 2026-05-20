@@ -12,7 +12,6 @@ A desktop application for dermoscopic image analysis using the ABCDE rule for me
 - ABCDE feature extraction (Asymmetry, Border, Colour, Diameter, Texture)
 - Risk classification — Low / Medium / High
 - Segmentation overlay visualisation
-- Export analysis report as `.txt`
 
 ---
 
@@ -30,7 +29,6 @@ APC_Project/
 │
 ├── models/
 │   ├── skin_lesion.py             # Lesion domain object
-│   └── scan_report.py             # Report domain object
 │
 ├── processing/
 │   ├── image_processor.py         # Abstract base class
