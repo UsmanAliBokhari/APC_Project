@@ -44,7 +44,6 @@ class SkinLesion:
         self.features:       Optional[dict]        = None
         self.risk_score:     Optional[float]       = None
         self.risk_level:     Optional[str]         = None
-        self.report                                = None 
 
     @property
     def image_name(self) -> str:
@@ -54,11 +53,7 @@ class SkinLesion:
     @property
     def working_image(self) -> np.ndarray:
         """Best available image for processing — falls back enhanced → raw."""
-        if self.enhanced_image is not None:
-            return self.enhanced_image
-        if self.raw_image is not None:
-            return self.raw_image
-        raise ValueError("No image loaded — call load_image first.")
+        return self.enhanced_image or self.raw_image
 
     @property
     def is_analysed(self) -> bool:
