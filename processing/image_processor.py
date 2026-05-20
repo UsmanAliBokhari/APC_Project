@@ -3,12 +3,9 @@ processing/image_processor.py
 ------------------------------
 Abstract base class for all image processing steps.
 
-Design
-------
 Each concrete processor (Enhancer, Segmenter, FeatureExtractor) receives
 a source image in its constructor, performs work, and exposes the outcome
-through the `result` property.  This keeps the interface uniform and makes
-it easy to chain processors.
+through the `result` property. 
 
 Subclasses must implement `_process()`.
 """
@@ -17,7 +14,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 import numpy as np
-
+import cv2
 
 class ImageProcessor(ABC):
     """
@@ -38,20 +35,12 @@ class ImageProcessor(ABC):
         self._result: np.ndarray | None = None
         self._process(**kwargs)
 
-    # ------------------------------------------------------------------
-    # Abstract interface
-    # ------------------------------------------------------------------
-
     @abstractmethod
     def _process(self, **kwargs) -> None:
         """
         Perform the processing and store the output in ``self._result``.
         Called automatically by ``__init__``.
         """
-
-    # ------------------------------------------------------------------
-    # Public property
-    # ------------------------------------------------------------------
 
     @property
     def result(self) -> np.ndarray:
@@ -60,15 +49,10 @@ class ImageProcessor(ABC):
             raise RuntimeError(f"{type(self).__name__}._process() did not set _result.")
         return self._result
 
-    # ------------------------------------------------------------------
-    # Shared utilities available to all subclasses
-    # ------------------------------------------------------------------
-
     @staticmethod
-    def to_gray(bgr: np.ndarray) -> np.ndarray:
-        """Convert a BGR image to single-channel grayscale."""
-        import cv2
-        return cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
+    def to_gray(img: np.ndarray) -> np.ndarray:
+        """Convert an RGB image to single-channel grayscale."""
+        return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
     @staticmethod
     def to_float(image: np.ndarray) -> np.ndarray:

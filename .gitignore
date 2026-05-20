@@ -16,6 +16,6 @@ models/detector.pkl
 .AppleDouble
 .LSOverride
 
-# IDE / Editor folders (Just in case you use VSCode or PyCharm later)
+# IDE / Editor folders 
 .vscode/
 .idea/

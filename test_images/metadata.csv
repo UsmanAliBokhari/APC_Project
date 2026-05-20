@@ -1,0 +1,4 @@
+isic_id,attribution,copyright_license,age_approx,anatom_site_1,anatom_site_2,anatom_site_3,anatom_site_general,concomitant_biopsy,diagnosis_1,diagnosis_2,diagnosis_3,diagnosis_confirm_type,image_type,lesion_id,melanocytic,sex
+ISIC_0024306,"ViDIR Group, Department of Dermatology, Medical University of Vienna",CC-BY-NC,45,Trunk,,,,False,Benign,Benign melanocytic proliferations,Nevus,serial imaging showing no change,dermoscopic,IL_7252831,True,male
+ISIC_0024310,"ViDIR Group, Department of Dermatology, Medical University of Vienna",CC-BY-NC,60,Trunk,Anterior trunk,Anterior chest,anterior torso,True,Malignant,Malignant melanocytic proliferations (Melanoma),"Melanoma, NOS",histopathology,dermoscopic,IL_8194852,True,male
+ISIC_0024312,"ViDIR Group, Department of Dermatology, Medical University of Vienna",CC-BY-NC,75,Lower extremity,,,lower extremity,True,Benign,Benign epidermal proliferations,Pigmented benign keratosis,histopathology,dermoscopic,IL_3471258,False,male
